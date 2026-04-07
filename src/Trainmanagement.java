@@ -1,23 +1,41 @@
 import java.util.HashMap;
-import java.util.Map;
+import java.util.*;
+
+// Step 1: Create Bogie class
+class Bogie {
+    String name;
+    int capacity;
+
+    // Constructor
+    Bogie(String name, int capacity) {
+        this.name = name;
+        this.capacity = capacity;
+    }
+
+    // toString() for easy printing
+    public String toString() {
+        return name + " (Capacity: " + capacity + ")";
+    }
+}
 
 public class Trainmanagement {
     public static void main(String[] args) {
 
-        // Step 1: Create HashMap for bogie-capacity mapping
-        HashMap<String, Integer> bogieCapacity = new HashMap<>();
+        // Step 2: Create list of bogies
+        List<Bogie> bogies = new ArrayList<>();
 
-        // Step 2: Add bogies with their capacities
-        bogieCapacity.put("Sleeper", 72);
-        bogieCapacity.put("AC Chair", 78);
-        bogieCapacity.put("First Class", 24);
+        // Step 3: Add bogies
+        bogies.add(new Bogie("Sleeper", 72));
+        bogies.add(new Bogie("AC Chair", 56));
+        bogies.add(new Bogie("First Class", 24));
 
-        // Step 3: Display all bogie-capacity mappings
-        System.out.println("Bogie Capacity Details:");
+        // Step 4: Sort bogies by capacity (ascending)
+        bogies.sort(Comparator.comparingInt(b -> b.capacity));
 
-        for (Map.Entry<String, Integer> entry : bogieCapacity.entrySet()) {
-            System.out.println("Bogie: " + entry.getKey() +
-                    " | Capacity: " + entry.getValue());
+        // Step 5: Display sorted bogies
+        System.out.println("Bogies sorted by capacity:");
+        for (Bogie b : bogies) {
+            System.out.println(b);
         }
     }
 }
